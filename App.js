@@ -12,6 +12,8 @@
   View, Colors, Alert, TouchableOpacity
 } from 'react-native';
 
+import SafeAreaView from 'react-native-safe-area-view';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
   'Cmd+D or shake for dev menu',
@@ -40,7 +42,7 @@ class TabIcon extends Component {
 
 class App extends React.Component {
   render() {
-    return <Router>
+    return  <SafeAreaView style={styles.safeArea}><Router>
     <Scene key="root" showLabel={true}  tabs={true} activeTintColor={activeTintColor} style={{backgroundColor: '#FFCC00' }}>
       <Stack key="home" path="login/:data">
         <Scene
@@ -65,6 +67,7 @@ class App extends React.Component {
       <Scene key="register" component={Register} title="Register" icon={TabIcon} iconName="user" />
     </Scene>
     </Router>
+    </SafeAreaView>
   }
 }
 
@@ -135,6 +138,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     margin: 20,
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#FFCC00'
   }
 });
 
